@@ -1,10 +1,29 @@
 public class EligibilityChecker {
-    public static boolean checkEligibility(Candidate candidate, Job job) {
-        if (candidate.getPercentage() >= job.getMinimumPercentage() &&
-            candidate.getBacklogs() <= job.getMaximumBacklogs() &&
-            candidate.getGraduationYear() == job.getRequiredGraduationYear()) {
-            return true;
+    private EligibilityRule[] rules;
+
+    public EligibilityChecker() {
+        rules = new EligibilityRule[] {
+            new PercentageRule(),
+            new BacklogRule(),
+            new GraduationYearRule(),
+            new SkillRule()
+        };
+    }
+
+    public boolean evaluate(Candidate candidate, Job job) {
+        boolean eligible = true;
+
+        for (int i = 0; i < rules.length; i++) {
+            boolean passed = rules[i].check(candidate, job);
+
+            if (passed) {
+                System.out.println(rules[i].getRuleName() + " : PASS");
+            } else {
+                System.out.println(rules[i].getRuleName() + " : FAIL");
+                eligible = false;
+            }
         }
-        return false;
+
+        return eligible;
     }
 }
