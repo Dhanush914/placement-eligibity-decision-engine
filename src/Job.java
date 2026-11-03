@@ -1,20 +1,38 @@
 public class Job {
-    private double requiredPercentage;
-    private int allowedBacklogs;
+    private String company;
+    private String role;
+    private double minimumPercentage;
+    private int maximumBacklogs;
     private int requiredGraduationYear;
 
-    public Job(double requiredPercentage, int allowedBacklogs, int requiredGraduationYear) {
-        this.requiredPercentage = requiredPercentage;
-        this.allowedBacklogs = allowedBacklogs;
+    public Job(
+        String company,
+        String role,
+        double minimumPercentage,
+        int maximumBacklogs,
+        int requiredGraduationYear
+    ) {
+        this.company = company;
+        this.role = role;
+        this.minimumPercentage = minimumPercentage;
+        this.maximumBacklogs = maximumBacklogs;
         this.requiredGraduationYear = requiredGraduationYear;
     }
 
-    public double getRequiredPercentage() {
-        return requiredPercentage;
+    public String getCompany() {
+        return company;
     }
 
-    public int getAllowedBacklogs() {
-        return allowedBacklogs;
+    public String getRole() {
+        return role;
+    }
+
+    public double getMinimumPercentage() {
+        return minimumPercentage;
+    }
+
+    public int getMaximumBacklogs() {
+        return maximumBacklogs;
     }
 
     public int getRequiredGraduationYear() {
